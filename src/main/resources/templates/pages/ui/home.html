@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Phat-store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<wrapper>
+    <th:block th:insert="~{/layouts/header.html::headerLayout}"></th:block>
+    <main>
+        <div class="shop">
+            <th:block th:insert="~{/layouts/categories.html::categoriesLayout(${categories})}"></th:block>
+            <th:block th:insert="~{/layouts/brands.html::brandsLayout(${brands})}"></th:block>
+        </div>
+        <th:block th:insert="~{layouts/logo.html::logoLayout}"></th:block>
+    </main>
+</wrapper>
+<script src="/scripts/header.js"></script>
+<script src="/scripts/home.js"></script>
+</body>
+</html>

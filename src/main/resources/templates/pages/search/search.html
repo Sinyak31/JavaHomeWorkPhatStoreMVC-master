@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<wrapper>
+    <th:block th:insert="~{/layouts/header.html::headerLayout}"></th:block>
+    <main>
+        <div class="shop">
+            <form class="search">
+                <select>
+                    <option th:each="category : ${categories}">[[${category}]]</option>
+                </select>
+                <select>
+                    <option th:each="brand : ${brands}">[[${brand}]]</option>
+                </select>
+                <select>
+                    <option th:each="color : ${colors}">[[${color}]]</option>
+                </select>
+                <select th:each="size : ${sizes}">
+                    <option th:each="name : ${size.getValue()}">[[${name}]]<option>
+                </select>
+                <div>Цена</div>
+                <div>
+                    <input type="text" placeholder="От" name="from">
+                    <input type="text" placeholder="До" name="to">
+                </div>
+                <input type="submit" value="Поиск">
+            </form>
+        </div>
+    </main>
+</wrapper>
+<script src="/scripts/header.js"></script>
+</body>
+</html>

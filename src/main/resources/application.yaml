@@ -1,0 +1,26 @@
+#properties
+#debug=true
+
+#spring.jpa.hibernate.ddl-auto=update
+
+#spring.datasource.driver-class-name=org.postgresql.Driver
+#spring.datasource.url=jdbc:postgresql://localhost:5432/phat_store
+#spring.datasource.username=postgres
+#spring.datasource.password=postgres
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+#spring.jpa.show-sql=true
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/phat_store
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+  flyway:
+    url: jdbc:postgresql://localhost:5432/phat_store
+    user: postgres
+    password: postgres
+    locations: classpath:/db/migration
+

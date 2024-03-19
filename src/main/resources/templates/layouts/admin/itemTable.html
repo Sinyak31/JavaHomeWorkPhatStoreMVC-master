@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="itemTableLayout(item, itemForSave, items)">
+    <button id="show-add-row">Добавить</button>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Модель</th>
+            <th>Количество</th>
+            <th>Цвет</th>
+            <th>Цена</th>
+            <th>Пол</th>
+            <th>Размер</th>
+            <th>Бренд</th>
+            <th>Категория</th>
+            <th colspan="2">Управление</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="save-row" hidden>
+            <form th:object="${item}" method="post" action="/admin/items/add">
+                <td><input type="text" name="id" disabled></td>
+                <td><input type="text" name="model" th:field="*{model}"></td>
+                <td><input type="text" name="amount" th:field="*{amount}"></td>
+                <td><input type="text" name="color" th:field="*{color}"></td>
+                <td><input type="text" name="price" th:field="*{price}"></td>
+                <td><input type="text" name="sex" th:field="*{sex}"></td>
+                <td><input type="text" name="size" th:field="*{size}"></td>
+                <td><input type="text" name="brand" th:field="*{brand}"></td>
+                <td><input type="text" name="category" th:field="*{category}"></td>
+                <td colspan="2"><input type="submit" value="Сохранить"></td>
+            </form>
+        </tr>
+        <tr th:each="item : ${items}" th:object="${itemForSave}">
+            <form method="post" th:action="@{'/admin/items/edit/' + ${item.id}}">
+                <td><input type="text" name="id" th:value="${item.id}" disabled></td>
+                <td><input type="text" name="model"  th:value="${item.model}"></td>
+                <td><input type="text" name="amount"  th:value="${item.amount}"></td>
+                <td><input type="text" name="color" th:value="${item.color}"></td>
+                <td><input type="text" name="price"  th:value="${item.price}"></td>
+                <td><input type="text" name="sex" th:value="${item.sex}"></td>
+                <td><input type="text" name="size"  th:value="${item.size}"></td>
+                <td><input type="text" name="brand"  th:value="${item.brand.id}"></td>
+                <td><input type="text" name="category" th:value="${item.category.id}"></td>
+                <td><input type="submit" value="Редактировать"></td>
+            </form>
+            <td>
+                <form method="post" th:action="@{'/admin/items/delete/' + ${item.id}}">
+                    <input type="submit" value="Удалить">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <script src="/scripts/admin.js"></script>
+</th:block>
+</body>
+</html>

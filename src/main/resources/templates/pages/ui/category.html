@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${category}]]</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<wrapper>
+    <th:block th:insert="~{layouts/header.html::headerLayout}"></th:block>
+    <main>
+        <div class="shop">
+        <th:block th:insert="~{/layouts/items.html::itemsLayout(${items})}"></th:block>
+        </div>
+        <th:block th:insert="~{layouts/logo.html::logoLayout}"></th:block>
+    </main>
+</wrapper>
+<script src="/scripts/header.js"></script>
+</body>
+</html>

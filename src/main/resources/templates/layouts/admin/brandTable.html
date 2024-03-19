@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="brandTableLayout(brand, brands)">
+  <button id="show-add-row">Добавить</button>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>Название</th>
+      <th colspan="2">Управление</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="save-row"  hidden>
+      <form th:object="${brand}" method="post" action="/admin/brands/add">
+        <td><input type="text" name="id" disabled></td>
+        <td><input type="text" name="name" th:field="*{name}"></td>
+        <td colspan="2"><input type="submit" value="Сохранить"></td>
+      </form>
+    </tr>
+    <tr th:each="brand : ${brands}">
+      <form method="post" th:action="@{'/admin/brands/edit/' + ${brand.id}}">
+        <td><input type="text" name="id" th:value="${brand.id}" disabled></td>
+        <td><input type="text" name="name" th:value="${brand.name}"></td>
+        <td><input type="submit" value="Редактировать"></td>
+        <td>
+      </form>
+      <form method="post" th:action="@{'/admin/brands/delete/' + ${brand.id}}">
+        <input type="submit" value="Удалить">
+      </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <script src="/scripts/admin.js"></script>
+</th:block>
+</body>
+</html>

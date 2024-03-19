@@ -1,0 +1,36 @@
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+    position: relative;
+    display: block;
+    font-size: 0.85rem;
+}
+
+/*разметка скелета*/
+
+.wrapper {
+    align-items: stretch;
+    display: flex;
+    width: 100%;
+    background: var(--bs-info-bg-subtle);
+}
+
+#side-bar {
+    max-width: 300px;
+    min-width: 300px;
+    background: var(--bs-primary-bg-subtle);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    min-height: 100vh;
+    /*max-width: 1200px;*/
+    min-width: 1200px;
+    background: var(--bs-info-bg-subtle);
+}
